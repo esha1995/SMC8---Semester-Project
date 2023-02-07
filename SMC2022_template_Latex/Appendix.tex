@@ -1,0 +1,79 @@
+\onecolumn
+\begin{appendices}
+\section{Kinect: User tracking code} \label{appendix: UserTrackingCode}
+\begin{lstlisting}[linewidth=\columnwidth,breaklines=true]
+IEnumerator DetectPlayer()
+{
+    while (trackingOn)
+    {
+        if (KinectManager.Instance.IsInitialized())
+        {
+            users = KinectManager.Instance.userManager.alUserIds;
+
+            tempPlayerDetected = false; 
+
+            foreach(ulong user in users)
+            {
+                if (KinectManager.Instance.IsUserTracked(user))
+                {
+
+                    Vector3 userPos = KinectManager.Instance.GetJointPosition(user, KinectInterop.JointType.Head);
+
+                    if(userPos.x > xMin && userPos.x < xMax && userPos.z > zMin && userPos.z < zMax)
+                    {
+
+                        if(detectedUserID != user)
+                        {
+                            detectedUserID = user;
+                        }
+
+                        tempPlayerDetected = true;
+                        break;
+                    }
+                }
+            }
+
+            if(tempPlayerDetected == true)
+            {
+                StartGestureTracking(gesturesToTrack, detectedUserID);
+                playerDetected = true;
+            }
+            else
+            {
+                StopGestureTracking(gesturesToTrack, detectedUserID);
+                playerDetected = false;
+            }
+        }
+
+        yield return new WaitForSeconds(DetectTime);
+    }
+}
+\end{lstlisting}
+
+\newpage
+\section{Audiometer: Faust Code} \label{appendix:faustCode}
+\begin{lstlisting}[linewidth=\columnwidth,breaklines=true]
+import("stdfaust.lib");
+
+audiometer = wt
+with {
+    // all variables
+    // center frequency
+    fc = nentry("Center frequency",125,125,8000,125);
+    // modulation rate
+    fm = nentry("Modulation rate",5,0,32,0.01); 
+    // frequency deviation
+    fd = nentry("Frequency deviation",0.05,0,0.1,0.001);
+    // pure or warble tone
+    pOrW = nentry("Pure tone or warble tone", 0,0,1,1); 
+    // modulation index
+    mi = (fc*fd)/fm; 
+    
+    // equation
+    wt = os.osc(fc + (1 == pOrW) * (mi * os.osc(fm)));
+};
+
+trigger  = nentry("ON/OFF", 1,0,1,1): si.smoo;
+process = audiometer * trigger <: _,_;
+\end{lstlisting}
+\end{appendices}

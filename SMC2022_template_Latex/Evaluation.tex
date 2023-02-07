@@ -1,0 +1,26 @@
+\section{Evaluation}
+
+\subsection{Methods}
+For the initial evaluation, the prototype was presented to audiologists at CHBC on two different occasions. The audiologist's opinions were gathered using the think-aloud method \cite{thinkAloud} and non-participatory observation methods during gameplay, along with the possibility of asking questions afterward. The main goal of the evaluation was to gather feedback on the prototype's functionality, whether the audiologist understood the concept, and whether the audiologist thought a child would be able to understand the game. As it is the audiologists who conduct hearing tests every day, it is essential that they believe the concept and gameplay are ready before testing on the target group. As of writing this report, it has not been possible to set up the final test as presented in section \ref{system design}. Instead, a simpler setup was used with only one Kinect, and one screen rendering all gameplay. Because of the limited time frame of this project, the prototype has yet to be tested on children. 
+
+\subsection{Results} \label{results}
+
+The following observations and results were gathered from the tests:
+\begin{itemize}
+    \item Several audiologists found it challenging to control the ninja in the way they wanted. For example, when slicing fruits, their movements were fast, which the Azure Kinects had difficulty tracking. 
+    \item One audiologist seemed confused about which part of the game was the actual hearing test. The question \textit{"Are the fruits not supposed to play tones?"} was asked, pointing to the audiologist not fully understanding the test. 
+    \item One audiologist pointed out that all screens should fade to black when a tone is presented. The audiologist mentioned this, as the visuals might distract the child from listening to the sound. Furthermore, it was said that only the screen with active gameplay should render any graphics. 
+    \item Several audiologists mentioned the Fruit Ninja game to be too long. Instead, they said the game should be short, with time only to slice a couple of fruits. 
+    \item Generally, the audiologist found the gameplay engaging and was, for the most part, able to understand the concept. However, one audiologist raised concerns about the younger children (i.e., 3-year-olds), who may not understand the game entirely.
+\end{itemize}
+
+\subsection{Discussion} \label{disussion}
+
+% Is the game ready for children?? 
+Based on the results from the preliminary evaluation (see section \ref{results}), the audiologist generally found the concept appealing. However, some issues with the prototype were pointed out, showing that it still needs further implementation before it is ready to test on the target group. As mentioned, it was observed that one audiologist had a hard time fully understanding which part of the game was the actual hearing test. Furthermore, one audiologist pointed out that the Fruit Ninja gameplay was too long. This feedback points to the hearing test part of the game needing to be more integrated with the Fruit Ninja gameplay. The long pauses in the hearing test might distract the child from the test itself and prolong it too much. It is crucial that further testing assess whether this is the case, and if so, the gameplay might need to be limited and integrated more.   \newline
+
+As one audiologist mentioned, the graphics must not distract the child when presenting tones. Removing the graphics when presenting tones and only having graphics rendered on one screen at a time is easily implementable and should help. Generally, this raises the concern of whether a 3D game and its visuals will end up distracting more than it engages. This will have to be assessed further to see whether the visual needs to be removed, so the graphics is less distracting. Another concern is whether the gameplay is too advanced, especially for younger children. Slicing fruits should be an easy task; however, if the child does not understand how to control the avatar, this might cause some issues. \newline
+
+It was observed that the audiologist had difficulty controlling the avatar in the way they wanted. The precision and small delay when tracking bodies using the Azure Kinect might cause a problem when children play. If the child cannot play the game correctly because of precision and delay issues, this might cause the child to become frustrated with the game and, thereby, the hearing test. However, precision issues might be solved when testing using the exact setup presented in section \ref{system design}. It should be tested whether the complete test setup solves these issues; if not, the way the avatar is controlled might need to be changed. \newline 
+
+

@@ -1,0 +1,116 @@
+
+\documentclass{article}
+\usepackage{smc}
+\usepackage{times}
+\usepackage{ifpdf}
+\bibliographystyle{plainnat}
+\usepackage[english]{babel}
+\usepackage[numbers]{natbib}
+
+%user defined variables
+\def\papertitle{A new way to Conditioned Play Audiometry: Exploring  gamification opportunities}
+\def\firstauthor{Emil Sønderskov Hansen}
+\def\thirdauthor{Stefania Serafin}
+
+\newif\ifpdf
+\ifx\pdfoutput\relax
+\else
+   \ifcase\pdfoutput
+      \pdffalse
+   \else
+      \pdftrue
+\fi
+
+\ifpdf % compiling with pdflatex
+  \usepackage[pdftex,
+    pdftitle={\papertitle},
+    pdfauthor={\firstauthor, \secondauthor, \thirdauthor},
+    bookmarksnumbered, % use section numbers with bookmarks
+    pdfstartview=XYZ % start with zoom=100% instead of full screen; 
+                     % especially useful if working with a big screen :-)
+   ]{hyperref}
+  %\pdfcompresslevel=9
+
+  \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are and their extensions so 
+  %you won't have to specify these with every instance of \includegraphics
+  \graphicspath{{./figures/}}
+  \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+
+  \usepackage[figure,table]{hypcap}
+
+\else % compiling with latex
+  \usepackage[dvips,
+    bookmarksnumbered, % use section numbers with bookmarks
+    pdfstartview=XYZ % start with zoom=100% instead of full screen
+  ]{hyperref}  % hyperrefs are active in the pdf file after conversion
+
+  \usepackage[dvips]{epsfig,graphicx}
+  % declare the path(s) where your graphic files are and their extensions so 
+  %you won't have to specify these with every instance of \includegraphics
+  \graphicspath{{./figures/}}
+  \DeclareGraphicsExtensions{.eps}
+
+  \usepackage[figure,table]{hypcap}
+\fi
+
+\hypersetup{
+    colorlinks,%
+    citecolor=black,%
+    filecolor=black,%
+    linkcolor=black,%
+    urlcolor=black
+}
+
+\title{\papertitle}
+
+ \threeauthors
+   {\firstauthor} {Aalborg University CPH \\ %
+     {\tt \href{mailto:esha19@student.aau.dk}{esha19@student.aau.dk}}}
+   {\secondauthor} {Aalborg University CPH \\ %
+     {\tt \href{mailto:smkk19@student.aau.dk}{smkk19@student.aau.dk}}}
+   {\thirdauthor} {Multisensory Experience Lab \\ %
+   {\tt \href{mailto:adj@create.aau.dk}{adj@create.aau.dk}}
+     {\tt \href{mailto:sts@create.aau.dk}{sts@create.aau.dk}}}
+     
+ \author{
+  Emil Sønderskov Hansen \\ Aalborg University CPH \\
+  \texttt{\href{mailto:esha19@student.aau.dk}{esha19@student.aau.dk}}
+  \and
+  Stefania Serafin \\ Multisensory Experience Lab \\
+  \texttt{\href{mailto:sts@create.aau.dk}{sts@create.aau.dk}}
+}
+     
+     
+
+
+
+% ***************************************** the document starts here ***************
+\begin{document}
+
+\capstartfalse
+\maketitle
+\capstarttrue
+%
+\begin{abstract}
+Conditioned Play Audiometry (CPA) is a modification of pure tone audiometry for 3-5-year-old children, turning the hearing test into a playful game. Currently, analog methods are used, such as putting a toy in a box, when a tone is perceived. It is hard to keep the attention of children, who are used to playing with computers, smartphones, etc., at home. At the Copenhagen Hearing and Balance Centre (CHBC), they report up to one in every third child goes home with little to no results, as the child does not engage in the test. This paper explores gamifying methods for CPA to address low patient cooperation. The current setup at CHBC was transformed into a 3D play audiometer controlled by the child's movements using the Azure Kinect. The audiologists evaluated the prototypes using the think-aloud method and non-participatory observations. From the results, several issues and optimizations were pointed out. When implemented, the prototype is ready to be presented to children to assess the potential for the play audiometer. 
+\end{abstract}
+
+
+\input{SMC2022_template_Latex/Introduction}
+\input{SMC2022_template_Latex/RelatedWork}
+\input{SMC2022_template_Latex/Implementation}
+\input{SMC2022_template_Latex/Evaluation.tex}
+\input{SMC2022_template_Latex/discussion.tex}
+\input{SMC2022_template_Latex/conclusions.tex}
+\input{SMC2022_template_Latex/Acknowledgement.tex}
+\newpage
+\bibliography{smc2022bib}
+
+\newpage
+\input{SMC2022_template_Latex/Appendix}
+
+
+
+
+\end{document}
